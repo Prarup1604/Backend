@@ -2,7 +2,16 @@
 const mongoose = require('mongoose');
 
 const transactionSchema = new mongoose.Schema({
-  user: {
+  sender: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  fullName: {
+    type: String,
+    required: true,
+  },
+  receiver: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
@@ -11,9 +20,8 @@ const transactionSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  type: {
+  remarks: {
     type: String,
-    enum: ['income', 'expense'],
     required: true,
   },
   date: {
